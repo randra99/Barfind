@@ -191,6 +191,8 @@ public class SignupPage extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user)
     {
+        if(user!=null)
+        {
         if(user.getPhotoUrl().toString().equals("1"))
         {
             Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
@@ -199,7 +201,7 @@ public class SignupPage extends AppCompatActivity {
         else {
             Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
             startActivity(startbarIntent);
-        }
+        }}
     }
 
     @Override

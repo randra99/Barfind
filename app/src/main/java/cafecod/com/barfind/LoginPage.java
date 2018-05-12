@@ -168,13 +168,19 @@ public class LoginPage extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        Toast.makeText(LoginPage.this, "Authentication failed.",
+                Toast.LENGTH_SHORT).show();
         updateUI(currentUser);
+
     }
 
    // @Override
     private void updateUI(FirebaseUser user)
     {
-       if(user.getPhotoUrl().toString().equals("1"))
+
+        if(user!=null)
+        {
+       if(user.getPhotoUrl().toString().equals('1'))
         {
                 Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
                 startActivity(startuserIntent);
@@ -182,7 +188,15 @@ public class LoginPage extends AppCompatActivity {
         else {
             Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
             startActivity(startbarIntent);
-             }
+             }}
+             else
+        {
+            final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
+            final EditText passEditText = (EditText) findViewById(R.id.passEditText);
+            emailEditText.setText("");
+            passEditText.setText("");
+        }
+
     }
 
     @Override
