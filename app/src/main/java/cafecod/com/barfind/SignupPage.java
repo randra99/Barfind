@@ -151,11 +151,12 @@ public class SignupPage extends AppCompatActivity {
 
                                         if(usertype==1)
                                         {
-                                            user.getProviderData();
+                                            user.updateProfile(builder.setPhotoUri(Uri.parse("1")).build());
                                             //Calin, aici user normal
                                         }
                                         else
                                         {
+                                            user.updateProfile(builder.setPhotoUri(Uri.parse("2")).build());
                                             //Calin,aici user bar
                                         }
                                         updateUI(user);
@@ -190,15 +191,15 @@ public class SignupPage extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user)
     {
-            if(usertype==1)
-            {
-         //         Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
-         //         startActivity(startuserIntent);
-            }
-           else {
-         //        Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
-         //        startActivity(startbarIntent);
-                 }
+        if(user.getPhotoUrl().toString().equals("1"))
+        {
+            Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
+            startActivity(startuserIntent);
+        }
+        else {
+            Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
+            startActivity(startbarIntent);
+        }
     }
 
     @Override

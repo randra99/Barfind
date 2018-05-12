@@ -21,4 +21,13 @@
     <string name="title_activity_login_page">LoginPage</string>
 
     <string name="title_activity_signup_page">SignupPage</string>
+
+    <string name="title_activity_bar_user_page">BarUserPage</string>
+    <string name="title_activity_regular_user_page">RegularUserPage</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>

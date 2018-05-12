@@ -1,32 +1,18 @@
 package cafecod.com.barfind;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class LoginPage extends AppCompatActivity {
+public class BarUserPage extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -96,60 +82,18 @@ public class LoginPage extends AppCompatActivity {
             return false;
         }
     };
-    private FirebaseAuth mAuth;
-    private static final String TAG = "MainActivity";
-    private String email;
-    private  String pass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_login_page);
+        setContentView(R.layout.activity_bar_user_page);
 
-        mAuth = FirebaseAuth.getInstance();
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-        final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
-        final EditText passEditText = (EditText) findViewById(R.id.passEditText);
-        Button loginBtn = (Button) findViewById(R.id.loginBtn);
-        TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signupIntent =new Intent(getApplicationContext(),SignupPage.class);
-                startActivity(signupIntent);
-            }
-        });
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                email=emailEditText.getText().toString();
-                pass=passEditText.getText().toString();
-                mAuth.signInWithEmailAndPassword(email,pass)
-                        .addOnCompleteListener(LoginPage.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithCustomToken:success");
-                                    Toast.makeText(LoginPage.this, "Authentication succesfull.",
-                                            Toast.LENGTH_SHORT).show();
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    user.getPhotoUrl().toString();
-                                    updateUI(user);
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "signInWithCustomToken:failure", task.getException());
-                                    Toast.makeText(LoginPage.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
-                                }
-                            }
 
-                        });
-            }
-        });
+
         // Set up the user interaction to manually show or hide the system UI.
         mContentView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,29 +104,8 @@ public class LoginPage extends AppCompatActivity {
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }
-
-   // @Override
-    private void updateUI(FirebaseUser user)
-    {
-       if(user.getPhotoUrl().toString().equals("1"))
-        {
-                Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
-                startActivity(startuserIntent);
-        }
-        else {
-            Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
-            startActivity(startbarIntent);
-             }
+        // while interacting with the UI.
+        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
     @Override

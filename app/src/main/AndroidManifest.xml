@@ -29,7 +29,16 @@
             android:name=".SignupPage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_signup_page"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".BarUserPage"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_bar_user_page"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".RegularUserPage"
+            android:label="@string/title_activity_regular_user_page"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
