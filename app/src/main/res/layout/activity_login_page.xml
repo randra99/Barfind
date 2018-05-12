@@ -6,9 +6,7 @@
 
     android:layout_height="match_parent"
     android:background="#8c0000"
-    tools:context=".LoginPage"
-    android:name="Txt"
-    android:label="Txt">
+    tools:context=".LoginPage">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
