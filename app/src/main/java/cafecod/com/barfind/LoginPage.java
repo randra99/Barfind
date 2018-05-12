@@ -136,6 +136,7 @@ public class LoginPage extends AppCompatActivity {
                                     Toast.makeText(LoginPage.this, "Authentication succesfull.",
                                             Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    user.getPhotoUrl().toString()
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.

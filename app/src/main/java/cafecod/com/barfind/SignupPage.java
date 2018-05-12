@@ -2,6 +2,7 @@ package cafecod.com.barfind;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
+import com.google.firebase.auth.UserProfileChangeRequest;
+
+import java.util.List;
+
+import cafecod.com.barfind.domain.ExtendedUserInfo;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -139,8 +146,12 @@ public class SignupPage extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
+                                        UserProfileChangeRequest.Builder builder = new UserProfileChangeRequest.Builder();
+                                        user.updateProfile(builder.setPhotoUri(Uri.parse("1")).build());
+
                                         if(usertype==1)
                                         {
+                                            user.getProviderData();
                                             //Calin, aici user normal
                                         }
                                         else
