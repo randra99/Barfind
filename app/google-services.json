@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1057117942586",
+    "firebase_url": "https://barfind-5fa54.firebaseio.com",
+    "project_id": "barfind-5fa54",
+    "storage_bucket": "barfind-5fa54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057117942586:android:f81a90838bf9d9a4",
+        "android_client_info": {
+          "package_name": "cafecod.com.barfind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057117942586-ur3156304l7i8hoims63frn2ud1pavil.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cafecod.com.barfind",
+            "certificate_hash": "d5894fcaf23a18d0aa2c58876fed80e8aaaf755e"
+          }
+        },
+        {
+          "client_id": "1057117942586-1n1g98a899374ibfhp41s4flcnd095k9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAw4Ob9pGgKWuYNLZfaUWMXJ2BcRGtH9PQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057117942586-1n1g98a899374ibfhp41s4flcnd095k9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
