@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -24,6 +25,8 @@ public class BarUserPage extends AppCompatActivity {
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+
+
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -88,6 +91,8 @@ public class BarUserPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_bar_user_page);
+
+
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
