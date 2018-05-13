@@ -1,46 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondBarUserPage">
+    android:background="@color/fundal"
+    tools:context=".BarUserPage">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Test"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="80dp" />
-</android.support.constraint.ConstraintLayout>
--->
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/frameLayout3"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/fundal"
-tools:context=".SecondBarUserPage">
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
 
-<!-- The primary full-screen view. This can be replaced with whatever view
-     is needed to present your content, e.g. VideoView, SurfaceView,
-     TextureView, etc. -->
+    <ImageButton
+        android:id="@+id/putini"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/multi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/putini" />
 
-<!-- This FrameLayout insets its children based on system windows using
-     android:fitsSystemWindows. -->
+    <ImageButton
+        android:id="@+id/gol"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/putini"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gol" />
 
-<ImageButton
-    android:id="@+id/imageButton2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/putini" />
+    <ImageButton
+        android:id="@+id/multi"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginStart="111dp"
+        android:adjustViewBounds="true"
+        android:background="@null"
+        android:cropToPadding="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/multi" />
 </android.support.constraint.ConstraintLayout>

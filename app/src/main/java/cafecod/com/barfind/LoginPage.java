@@ -171,9 +171,9 @@ public class LoginPage extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-    //      FirebaseUser currentUser = mAuth.getCurrentUser();
-    //      if(currentUser!=null){
-    //     updateUI(currentUser);}
+     //    FirebaseUser currentUser = mAuth.getCurrentUser();
+     //    if(currentUser!=null){
+     //    updateUI(currentUser);}
 
     }
 
@@ -194,7 +194,7 @@ public class LoginPage extends AppCompatActivity {
                 Toast.makeText(LoginPage.this, "Going 2.",
                         Toast.LENGTH_SHORT).show();
 //                Intent startbarIntent = new Intent(getApplicationContext(), RegularUserPage.class);
-                Intent startbarIntent = new Intent(getApplicationContext(), FullscreenActivity.class);
+                Intent startbarIntent = new Intent(getApplicationContext(), SecondBarUserPage.class);
                 startActivity(startbarIntent);
             }
 
