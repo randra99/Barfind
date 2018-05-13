@@ -3,7 +3,7 @@
     <color name="colorPrimary">#ac000000</color>
     <color name="colorPrimaryDark">#ac000000</color>
     <color name="colorAccent">#6571fa</color>
-    <color name="task"></color>
+    <color name="galben">#fccb16</color>
     <color name="fundal">#8c0000</color>
     <color name="black_overlay">#66000000</color>
 </resources>
