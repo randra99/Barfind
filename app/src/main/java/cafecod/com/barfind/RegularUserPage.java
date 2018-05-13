@@ -3,8 +3,11 @@ package cafecod.com.barfind;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.internal.NavigationMenuItemView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +17,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 import cafecod.com.barfind.domain.InfoActivity;
 
 public class RegularUserPage extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
+    private ListView mListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,18 +57,41 @@ public class RegularUserPage extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        MenuItem info =(MenuItem) findViewById(R.id.nav_info);
-        info.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent infoIntent = new Intent(getApplicationContext(), InfoActivity.class);
-                startActivity(infoIntent);
-                return false;
-            }
-        });
+// 1
+
+
+        db.collection("barStatus").orderBy("Time")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            mListView = (ListView) findViewById(R.id.listItems);
+                            String[] listItems = new String[task.getResult().size()];
+                            int i=0;
+                            for (DocumentSnapshot document : task.getResult()) {
+// 2
+                                listItems[i++]=document.getId() + " => " + document.getData();
+                            }
+                            ArrayAdapter adapter = new ArrayAdapter(RegularUserPage.this, R.layout.my_listitems_detail, listItems);
+                            mListView.setAdapter(adapter);
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+   //     NavigationMenuItemView info =(NavigationMenuItemView) findViewById(R.id.nav_info);
+    //    info.setOnClickListener(new View.OnClickListener() {
+    //        @Override
+   //         public void onClick(View v) {
+    //            Intent infoIntent = new Intent(getApplicationContext(), InfoActivity.class);
+    //            startActivity(infoIntent);
+   //         }
+   //     });
     }
 
     @Override
@@ -100,6 +139,8 @@ public class RegularUserPage extends AppCompatActivity
         } else if (id == R.id.nav_map) {
 
         } else if (id == R.id.nav_info) {
+            Intent infoIntent = new Intent(getApplicationContext(), InfoActivity.class);
+            startActivity(infoIntent);
 
         } else if (id == R.id.nav_send) {
 
