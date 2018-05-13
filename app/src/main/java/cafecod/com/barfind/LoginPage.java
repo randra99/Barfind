@@ -136,16 +136,18 @@ public class LoginPage extends AppCompatActivity {
                                     Toast.makeText(LoginPage.this, "Authentication succesfull.",
                                             Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    user.getPhotoUrl().toString();
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithCustomToken:failure", task.getException());
                                     Toast.makeText(LoginPage.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
+                                    final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
+                                    final EditText passEditText = (EditText) findViewById(R.id.passEditText);
+                                    emailEditText.setText("");
+                                    passEditText.setText("");}
                                 }
-                            }
+
 
                         });
             }
@@ -167,35 +169,29 @@ public class LoginPage extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Toast.makeText(LoginPage.this, "Authentication failed.",
-                Toast.LENGTH_SHORT).show();
-        updateUI(currentUser);
+  //      FirebaseUser currentUser = mAuth.getCurrentUser();
+  //      if(currentUser!=null){
+  //      updateUI(currentUser);}
 
     }
 
    // @Override
     private void updateUI(FirebaseUser user)
     {
+        Toast.makeText(LoginPage.this, user.getEmail().toString(),
+                Toast.LENGTH_SHORT).show();
 
-        if(user!=null)
-        {
-       if(user.getPhotoUrl().toString().equals('1'))
-        {
-                Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
+        Toast.makeText(LoginPage.this, user.getPhotoUrl().toString(),
+                Toast.LENGTH_SHORT).show();
+            if (user.getPhotoUrl().toString().equals("1")) {
+                Intent startuserIntent = new Intent(getApplicationContext(), RegularUserPage.class);
                 startActivity(startuserIntent);
-        }
-        else {
-            Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
-            startActivity(startbarIntent);
-             }}
-             else
-        {
-            final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
-            final EditText passEditText = (EditText) findViewById(R.id.passEditText);
-            emailEditText.setText("");
-            passEditText.setText("");
-        }
+            } else {
+                Intent startbarIntent = new Intent(getApplicationContext(), BarUserPage.class);
+                startActivity(startbarIntent);
+            }
+
+            ;
 
     }
 
