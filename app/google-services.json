@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1057117942586-t6dk0ck87mucesore6lafdch0l619dbv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cafecod.com.barfind",
+            "certificate_hash": "68921717d05105ff1b382cffcb10735c8b91ba57"
+          }
+        },
+        {
           "client_id": "1057117942586-ur3156304l7i8hoims63frn2ud1pavil.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
