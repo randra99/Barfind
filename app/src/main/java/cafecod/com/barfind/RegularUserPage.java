@@ -81,10 +81,10 @@ public class RegularUserPage extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_view) {
-            // Handle the camera action
-        } else if (id == R.id.nav_map) {
 
         } else if (id == R.id.nav_options) {
+
+        } else if (id == R.id.nav_map) {
 
         } else if (id == R.id.nav_info) {
 
