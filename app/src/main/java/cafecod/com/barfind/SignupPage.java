@@ -106,7 +106,7 @@ public class SignupPage extends AppCompatActivity {
     };
 
     private FirebaseAuth mAuth;
-    public int usertype=1;
+    public int usertype;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +136,8 @@ public class SignupPage extends AppCompatActivity {
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(passEditText.getText().toString().equals(secondpassEditText.getText().toString()))
+                {
                     mAuth.createUserWithEmailAndPassword(mailEditText.getText().toString(), passEditText.getText().toString())
                             .addOnCompleteListener(SignupPage.this, new OnCompleteListener<AuthResult>() {
                                 @Override
@@ -163,12 +165,13 @@ public class SignupPage extends AppCompatActivity {
                                         Log.w(TAG, "createUs<erWithEmail:failure", task.getException());
                                         Toast.makeText(SignupPage.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
-
+                                        updateUI(null);
                                     }
 
                                     // ...
                                 }
                             });
+                }
             }
         });
 
@@ -188,6 +191,8 @@ public class SignupPage extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user)
     {
+        if(user!=null)
+        {
         if(user.getPhotoUrl().toString().equals("1"))
         {
             Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
@@ -196,7 +201,7 @@ public class SignupPage extends AppCompatActivity {
         else {
             Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
             startActivity(startbarIntent);
-        }
+        }}
     }
 
     @Override
