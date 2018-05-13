@@ -22,7 +22,7 @@ public class RegularUserPage extends AppCompatActivity
         setContentView(R.layout.activity_regular_user_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        setTitle("Test");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.cautare);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
