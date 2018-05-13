@@ -22,6 +22,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static java.lang.Integer.parseInt;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -136,16 +138,18 @@ public class LoginPage extends AppCompatActivity {
                                     Toast.makeText(LoginPage.this, "Authentication succesfull.",
                                             Toast.LENGTH_SHORT).show();
                                     FirebaseUser user = mAuth.getCurrentUser();
-                                    user.getPhotoUrl().toString();
                                     updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithCustomToken:failure", task.getException());
                                     Toast.makeText(LoginPage.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
+                                    final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
+                                    final EditText passEditText = (EditText) findViewById(R.id.passEditText);
+                                    emailEditText.setText("");
+                                    passEditText.setText("");}
                                 }
-                            }
+
 
                         });
             }
@@ -167,10 +171,9 @@ public class LoginPage extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        Toast.makeText(LoginPage.this, "Authentication failed.",
-                Toast.LENGTH_SHORT).show();
-        updateUI(currentUser);
+    //      FirebaseUser currentUser = mAuth.getCurrentUser();
+    //      if(currentUser!=null){
+    //     updateUI(currentUser);}
 
     }
 
@@ -178,24 +181,24 @@ public class LoginPage extends AppCompatActivity {
     private void updateUI(FirebaseUser user)
     {
 
-        if(user!=null)
-        {
-       if(user.getPhotoUrl().toString().equals('1'))
-        {
-                Intent startuserIntent =new Intent(getApplicationContext(),RegularUserPage.class);
+            int userype=Integer.parseInt(user.getPhotoUrl().toString());
+            if (userype==1) {
+
+                Intent startuserIntent = new Intent(getApplicationContext(), RegularUserPage.class);
+                Toast.makeText(LoginPage.this, "Going.",
+                        Toast.LENGTH_SHORT).show();
                 startActivity(startuserIntent);
-        }
-        else {
-            Intent startbarIntent =new Intent(getApplicationContext(),BarUserPage.class);
-            startActivity(startbarIntent);
-             }}
-             else
-        {
-            final EditText emailEditText = (EditText) findViewById(R.id.emailEditText);
-            final EditText passEditText = (EditText) findViewById(R.id.passEditText);
-            emailEditText.setText("");
-            passEditText.setText("");
-        }
+            }
+            if(userype==2)
+            {
+                Toast.makeText(LoginPage.this, "Going 2.",
+                        Toast.LENGTH_SHORT).show();
+//                Intent startbarIntent = new Intent(getApplicationContext(), RegularUserPage.class);
+                Intent startbarIntent = new Intent(getApplicationContext(), FullscreenActivity.class);
+                startActivity(startbarIntent);
+            }
+
+            ;
 
     }
 
