@@ -8,4 +8,33 @@
     tools:context=".RegularUserPage"
     tools:showIn="@layout/app_bar_regular_user_page">
 
+    <FrameLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="172dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/numeBar"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="#numeBar"
+            android:textColor="@color/galben"
+            android:textSize="30sp"
+            />
+
+        <TextView
+            android:id="@+id/descriereBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="40sp"
+            android:text="Akjjsadhkxchjhakhjjkh JHAKhljkshkxjkc. lkjlakjsdljlj"
+            android:textSize="20sp" />
+
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>
