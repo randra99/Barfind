@@ -1,13 +1,18 @@
 package cafecod.com.barfind;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -15,6 +20,7 @@ import java.util.Map;
 
 public class SecondBarUserPage extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,33 +34,32 @@ public class SecondBarUserPage extends AppCompatActivity {
         ImageButton putini = (ImageButton) findViewById(R.id.putini);
         ImageButton multi = (ImageButton) findViewById(R.id.multi);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         gol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-          /*      Map<String, Object>  = new HashMap<>();
-                user.put("first", "Ada");
-                user.put("last", "Lovelace");
-                user.put("born", 1815);
+                Map<String, Object> city = new HashMap<>();
+                city.put("name", "Los Angeles");
+                city.put("state", "CA");
+                city.put("country", "USA");
 
-// Add a new document with a generated ID
-                db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                db.collection("cities").document("LA")
+                        .set(city)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "DocumentSnapshot successfully written!");
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
+                                Log.w(TAG, "Error writing document", e);
                             }
-                        });*/
+                        });
 
             }
         });

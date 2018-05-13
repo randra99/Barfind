@@ -28,6 +28,7 @@ public class BarUserPage extends AppCompatActivity {
 
 
 
+
     /**
      * Some older devices needs a small delay between UI widget updates
      * and a change of the status and navigation bar.
