@@ -70,12 +70,12 @@ public class RegularUserPage extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            mListView = (ListView) findViewById(R.id.listItems);
+                            mListView = (ListView) findViewById(R.id.listItems2);
                             String[] listItems = new String[task.getResult().size()];
                             int i=0;
                             for (DocumentSnapshot document : task.getResult()) {
 // 2
-                                listItems[i++]=document.getId() + " => " + document.getData();
+                                listItems[i++]=document.getId() + " => " + document.getData().get("UID");
                             }
                             ArrayAdapter adapter = new ArrayAdapter(RegularUserPage.this, R.layout.my_listitems_detail, listItems);
                             mListView.setAdapter(adapter);
